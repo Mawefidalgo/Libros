@@ -1,0 +1,18 @@
+<html>
+<head>
+    <title>Detalles</title>
+</head>
+<body>
+    <h2>Detales del libro "{{ libros.title }}"</h2>
+    <div class="Libros">
+            <p><b>Autor:</b> {{ libros.author }}</p>
+            <p><b>Valoracion:</b> {{ libros.rating }}</p>
+            <p><b>sinopsis:</b> {{ libros.sinopsis }}</p>
+            <p><b>Fecha creacion:</b> {{ libros.created_at }}</p>
+            <p><b>Fecha actualizacion:</b> {{ libros.update_at }}</p>
+        </div>
+        <form action="{% url 'listadoLibros' %}">
+            <button type="submit">Ir al listado</button>
+        </form>
+</body>
+</html>

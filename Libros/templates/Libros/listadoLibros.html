@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Listado de libros</title>
+    </head>
+    <body>
+        <h2>Listado de libros</h2>
+        <ul>
+            {% for libros in libros_list %}
+            <li><a href="{% url 'detalles' pk=libros.pk %}" >{{ libros.title }}</a></li>
+            {% empty %}
+            <p>No hay libros disponibles.</p>
+            {% endfor %}
+        </ul>
+        <form action="{% url 'FormLibro' %}">
+            <button type="submit">Nuevo libro</button>
+        </form>
+    </body>
+</html>
