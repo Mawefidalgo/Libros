@@ -1,12 +1,16 @@
 <html>
     <head>
+        <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.classless.min.css"&gt;>
         <title>Listado de libros</title>
     </head>
     <body>
         <h2>Listado de libros</h2>
         <ul>
             {% for libros in libros_list %}
-            <li><a href="{% url 'detalles' pk=libros.pk %}" >{{ libros.title }}</a></li>
+            <li>
+                <a href="{% url 'detalles' pk=libros.pk %}" >{{ libros.title }}</a>
+                    <button type="submit"><a href="{% url 'editar' pk=libros.pk %}" >Editar libro</a></button>
+            </li>
             {% empty %}
             <p>No hay libros disponibles.</p>
             {% endfor %}

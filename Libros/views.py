@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, UpdateView
 from .forms import LibrosForm
 from .models import Libros
+from django.urls import reverse_lazy
 # Create your views here.
 # class ProyectoLibros(View):
 
@@ -40,3 +41,24 @@ class FormLibro(View):
 class Detalles(DetailView):
     model = Libros
     template_name = 'Libros/detallesLibros.html'
+
+
+class Editar(UpdateView):
+    model = Libros
+    fields = ['title','author', 'rating','sinopsis','created_at','update_at']
+    template_name= "Libros/editar.html"
+    success_url = reverse_lazy("listadoLibros")
+# class Editar(View):
+
+#     def get(self, request, pk):
+#         libros = get_object_or_404(Libros, pk=pk)
+#         form = LibrosForm(instance=libros)
+#         return render(request, 'Libros/Editar.html', {'form': form, 'libro': libros})
+
+#     def post(self, request, pk):
+#         libros = get_object_or_404(Libros, pk=pk)
+#         form = LibrosForm(request.POST, instance=libros)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('listadoLibros')
+#         return render(request, 'Libros/Editar.html', {'form': form, 'libro': libros})
