@@ -10,6 +10,7 @@
             <li>
                 <a href="{% url 'detalles' pk=libros.pk %}" >{{ libros.title }}</a>
                     <button type="submit"><a href="{% url 'editar' pk=libros.pk %}" >Editar libro</a></button>
+                    <button type="submit"><a href="{% url 'borrar' pk=libros.pk %}">Borrar libro</a></button>
             </li>
             {% empty %}
             <p>No hay libros disponibles.</p>
